@@ -1,6 +1,7 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import "./styles/Landing.css";
 import { useLoading } from "../context/LoadingProvider";
+import { profile } from "../data/profile";
 
 function useTypingEffect(text: string, delay: number, speed: number, enabled: boolean) {
   const [displayed, setDisplayed] = useState("");
@@ -22,7 +23,7 @@ function useTypingEffect(text: string, delay: number, speed: number, enabled: bo
 
 const Landing = ({ children }: PropsWithChildren) => {
   const { isLoading } = useLoading();
-  const name = useTypingEffect("YOUR NAME", 1500, 120, !isLoading);
+  const name = useTypingEffect(profile.name.toUpperCase(), 1500, 120, !isLoading);
 
   return (
     <>
@@ -31,8 +32,8 @@ const Landing = ({ children }: PropsWithChildren) => {
         <div className="landing-circle2"></div>
         <div className="landing-container">
           <div className="landing-intro">
-            <h2>Hello! I'm</h2>
-            <h1 className="landing-typed-name" aria-label="YOUR NAME">
+            <h2>{profile.greeting}</h2>
+            <h1 className="landing-typed-name" aria-label={profile.name}>
               {name}<span className="typing-cursor">|</span>
             </h1>
           </div>
@@ -40,14 +41,14 @@ const Landing = ({ children }: PropsWithChildren) => {
             {children}
           </div>
           <div className="landing-info">
-            <h3>A Creative</h3>
-            <h2 className="landing-info-h2" aria-label="Builder, Engineer">
-              <div className="landing-h2-1">Builder</div>
-              <div className="landing-h2-2">Engineer</div>
+            <h3>{profile.tagline}</h3>
+            <h2 className="landing-info-h2" aria-label={profile.roles.join(", ")}>
+              <div className="landing-h2-1">{profile.roles[0]}</div>
+              <div className="landing-h2-2">{profile.roles[1]}</div>
             </h2>
             <h2>
-              <div className="landing-h2-info">Engineer</div>
-              <div className="landing-h2-info-1">Builder</div>
+              <div className="landing-h2-info">{profile.roles[1]}</div>
+              <div className="landing-h2-info-1">{profile.roles[0]}</div>
             </h2>
             <button
               className="landing-chat-cta"

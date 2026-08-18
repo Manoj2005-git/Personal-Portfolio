@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 import HoverLinks from "./HoverLinks";
 import "./styles/Navbar.css";
+import { profile } from "../data/profile";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,14 +30,14 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          YN
+          {profile.initials}
         </a>
         <a
-          href="mailto:you@example.com"
+          href={`mailto:${profile.email}`}
           className="navbar-connect"
           data-cursor="disable"
         >
-          you@example.com
+          {profile.email}
         </a>
         <ul>
           <li>

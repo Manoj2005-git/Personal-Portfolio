@@ -1,6 +1,7 @@
 import { MdArrowOutward, MdCopyright } from "react-icons/md";
 import { TbDownload } from "react-icons/tb";
 import "./styles/Contact.css";
+import { profile } from "../data/profile";
 
 const Contact = () => {
   return (
@@ -11,15 +12,23 @@ const Contact = () => {
           <div className="contact-box">
             <h4>Email</h4>
             <p>
-              <a href="mailto:you@example.com" data-cursor="disable">
-                you@example.com
+              <a href={`mailto:${profile.email}`} data-cursor="disable">
+                {profile.email}
+              </a>
+            </p>
+          </div>
+          <div className="contact-box">
+            <h4>Phone</h4>
+            <p>
+              <a href={`tel:${profile.phone.replace(/\s+/g, "")}`} data-cursor="disable">
+                {profile.phone}
               </a>
             </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
             <a
-              href="https://github.com/yourusername"
+              href={profile.github}
               target="_blank"
               data-cursor="disable"
               className="contact-social"
@@ -27,25 +36,17 @@ const Contact = () => {
               Github <MdArrowOutward />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href={profile.linkedin}
               target="_blank"
               data-cursor="disable"
               className="contact-social"
             >
               Linkedin <MdArrowOutward />
             </a>
-            {/* <a
-              href="https://x.com/yourusername"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Twitter <MdArrowOutward />
-            </a> */}
           </div>
           <div className="contact-box">
             <a
-              href="/resume.pdf"
+              href={profile.resume}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
@@ -56,10 +57,10 @@ const Contact = () => {
           </div>
           <div className="contact-box">
             <h2>
-              Built by <span>Your Name</span>
+              Built by <span>{profile.name}</span>
             </h2>
             <h5>
-              <MdCopyright /> 2026 Your Name. All Rights Reserved.
+              <MdCopyright /> 2026 {profile.name}. All Rights Reserved.
             </h5>
           </div>
         </div>
