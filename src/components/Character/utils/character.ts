@@ -56,7 +56,10 @@ export function createRikinCharacter(
             float legWidth = smoothstep(0.68, 0.76, y) * (1.0 - smoothstep(0.9, 0.98, y)) * 0.06;
             float silhouetteWidth = max(headWidth, max(shoulderWidth, max(bodyWidth, legWidth)));
             float silhouette = 1.0 - smoothstep(silhouetteWidth, silhouetteWidth + 0.025, abs(vUv.x - 0.5));
-            pixel.a *= silhouette;
+            float yellowBackground = smoothstep(0.88, 0.98, pixel.r)
+              * smoothstep(0.62, 0.76, pixel.g)
+              * smoothstep(0.12, 0.24, pixel.b);
+            pixel.a *= silhouette * (1.0 - yellowBackground);
             if (pixel.a < 0.05) discard;
             gl_FragColor = pixel;
           }
