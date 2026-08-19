@@ -51,7 +51,10 @@ const Scene = () => {
     }
 
     const rect = canvasDiv.current.getBoundingClientRect();
-    const container = { width: rect.width, height: rect.height };
+    const container = {
+      width: Math.max(rect.width, window.innerWidth),
+      height: Math.max(rect.height, window.innerHeight),
+    };
     const aspect = container.width / container.height;
 
     const scene = new THREE.Scene();
