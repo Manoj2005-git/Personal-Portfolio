@@ -81,6 +81,10 @@
   .landing-avatar-slot .character-model::after {
     display: none;
   }
+  .avatar-image {
+    width: min(68vw, 360px);
+    max-height: 40vh;
+  }
   .character-rim {
     width: 150px;
     height: 150px;
@@ -352,6 +356,16 @@
 .character-model canvas {
   position: relative;
   pointer-events: none;
+  z-index: 2;
+}
+.avatar-image {
+  display: block;
+  width: min(42vw, 440px);
+  max-height: 72vh;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 18px;
+  position: relative;
   z-index: 2;
 }
 .character-hover {
