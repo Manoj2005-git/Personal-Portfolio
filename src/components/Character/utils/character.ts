@@ -46,8 +46,8 @@ export function createRikinCharacter(
           }
         }
       });
-      model.scale.setScalar(4.8);
-      model.position.set(0, -0.9, 0);
+      model.scale.setScalar(3.8);
+      model.position.set(0, -0.8, 0);
       character.add(model);
       dracoLoader.dispose();
       onLoaded?.();
